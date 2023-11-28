@@ -1,7 +1,14 @@
 <?php
-// echo "hello "
-?>
 
+// to create a constant 
+define('NAME','San');
+
+//$name = "Dan";
+// echo $name;
+
+$age = 30;
+
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +19,10 @@
     <title>PHP FILE</title>
 </head>
 <body>
-    <h1><?php echo "Hello world" ?></h1>
+    <h1><?php echo "user profil page" ?></h1>
+    <div><?php echo NAME ?></div>
+    <div><?php echo $age ?></div><br>
+    
+
 </body>
 </html>
