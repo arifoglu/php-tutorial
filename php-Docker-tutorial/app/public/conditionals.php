@@ -22,20 +22,33 @@ $products = [
     ['name' => 'lightning bolt', 'price' => 40],
     ['name' => 'banana skin', 'price' => 2]
 ];
-
 foreach($products as $product){
-
-    // if($product['price'] < 15 && $product['price'] > 2)
-    // {
-    //     echo $product['name']."<br>";
-    // }
-
-    // if($product['price'] > 20 || $product['price'] < 10)
-    // {
-    //     echo $product['name']."<br>";
-    // }
+    if($product['name'] === "lightning bolt"){
+        break;
+    }
+    if($product['price'] > 15 ){
+        continue;
+    }
+    echo $product['name']."<br>" ;
 }
-echo "<br>";
+
+
+
+
+// foreach($products as $product){
+//     ////////////if else
+//     if($product['price'] < 15 && $product['price'] > 2)
+//     {
+//         echo $product['name']."<br>";
+//     
+//     if($product['price'] > 20 || $product['price'] < 10)
+//     {
+//         echo $product['name']."<br>";
+//     }
+// 
+// }
+
+ 
 
 ?>
 
@@ -75,6 +88,11 @@ echo "<br>";
                     <?php } ?> 
                 </ul>
             <?php } ?>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            <?php ?>
         </ul>
     </div>
 </body>
