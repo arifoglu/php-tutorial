@@ -11,7 +11,8 @@
  <!-- $_GET  -->
  <!-- $_GET can  collect data sent in the URL -->
  <!-- we can collect data after submitting an HTML form data  with method = "get" -->
- <!-- -->
+ <!--  -->
+ <!-- GET sends the data in the URL-->
   
 
 <a href="get.php?subject=PHP&web=W3schools.com">Test</a>

@@ -16,7 +16,7 @@
         In this example, we point to the file itself for processing form data. 
         If you wish to use another PHP file to process form data, replace that with the filename of your choice. 
         Then, we can use the super global variable $_POST to collect the value of the input field: -->
-  
+  <!-- POST sends  the data int the request header(hidden) -->
     <form method ="post" action="<?php echo $_SERVER['PHP_SELF']?>">
      Name: <input type="text" name="fname">
            <input type="submit">
