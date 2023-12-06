@@ -70,6 +70,11 @@ foreach($products as $product){
             <?php }?>
         </ul>
     </div>
+
+    <?php foreach($products as $product){ ?>
+        <?php echo $product['name'] ?> <br>
+    <?php } ?>
+
     <div>
         <ul>
             <?php foreach($products as $product){ ?>

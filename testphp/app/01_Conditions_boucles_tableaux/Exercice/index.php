@@ -24,7 +24,8 @@ echo '<pre>', var_dump( $thepage ), '</pre>';
     <main>
         <aside>
         <form method="get">
-            <input type="text" placeholder="Recherche d'un jour" name="day" value="<?php echo $theday; ?>">
+            <input type="text" placeholder="Recherche d'un jour" name="day" value="
+            <?php echo $theday; ?>">
             <input type="hidden" name="page" value="for">
             <input type="submit" value="OK">
         </form>
