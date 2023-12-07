@@ -58,9 +58,8 @@ if(isset($_POST['submit'])){
   else
   {
     $website = $_POST['website'];
-    if(!filter_var($website,FILTER_VALIDATE_URL))
-    {
-      $websiteValidation = "website must be valid <br>"; 
+    if(!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$website)){
+      $websiteValidation = "website must be valid <br>";
     }
   }
   //check gender
@@ -73,15 +72,15 @@ if(isset($_POST['submit'])){
     $gender = $_POST['gender'];
   }
   
-  $persons =
-  "<div class='bottom'>
-      <ul>
-        <li>$name</li>
-        <li>$email</li>
-        <li>$website</li>
-        <li>$gender</li>
-        </ul>
-   </div>";
+ //  $persons =
+ //  "<div class='bottom'>
+ //      <ul>
+ //        <li>$name</li>
+ //        <li>$email</li>
+ //        <li>$website</li>
+ //        <li>$gender</li>
+ //        </ul>
+ //   </div>";
 } 
 ?>
 
@@ -95,45 +94,62 @@ if(isset($_POST['submit'])){
     <style>
       .container{
         margin:auto;
-        width:400px;
-        height:400px;
+        width:600px;
+        min-height:800px;
         border:1px solid;
       }
       input,textarea{
-        padding:10px;
-        margin-left:10px;
+        padding:12px;
+        margin-left:40px;
+        margin-top:35px;
       }
       div.mainContainer{
         display: flex;
       }
       span{
         color:red;
+        margin-left:30px;
       }
-     
+     label{
+      margin-left:30px
+     }
+     input[type="submit"]{
+      margin-left:140px;
+      width:196px;
+     }  
     </style>
 </head>
 <body>
 
 <div class="mainContainer">
-<div class="container">
-  <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
-  <p><span class="error">* required field</span></p>
-Name:    <input type="text" name="name"><span class="error">*<?php echo $nameError.$nameValidation;?></span>
-<br><br>
-E-mail:  <input type="text" name="email"><span class="error">*<?php echo $emailError.$emailValidation;?></span><br>
-Website: <input type="text" name="website"><span class="error">*<?php echo $websiteError.$websiteValidation;?></span><br>
-Comment: <textarea rows="5" cols="20" name="comment" ></textarea><br>
-Gender:<br>
-          <input type="radio" name="gender" value="female">Female
-          <input type="radio" name="gender" value="male">Male
-          <input type="radio" name="gender" value="other">Other <span class="error">*<?php echo $genderError;?></span><br>
-          <input type="submit" value="submit" name="submit">
-   </form>
-</div>
+    <div class="container">
+      <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']);?>" method="post">
+       <p><span class="error">* required field</span></p>
+     
+       <label for="name">Names:</label>
+       <input type="text" name="name"><span class="error">*<?php echo $nameError.$nameValidation;?></span>
+       <br><br>
+     
+       <label for="email">E-mail: </label>
+       <input type="text" name="email"><span class="error">*<?php echo $emailError.$emailValidation;?></span><br>
+     
+       <label for="website">Website:</label> 
+       <input type="text" name="website"><span class="error">*<?php echo $websiteError.$websiteValidation;?></span><br>
+     
+       <label for="comment">Comment: </label> 
+       <textarea rows="5" cols="20" name="comment" ></textarea><br><br>
+     
+       <label for="gender">Gender:</label>
+               <input type="radio" name="gender" value="female">Female
+               <input type="radio" name="gender" value="male">Male
+               <input type="radio" name="gender" value="other">Other <span class="error">*<?php echo $genderError;?></span><br>
+               <input type="submit" value="submit" name="submit">
+       </form>
+    </div>
 </div>
 <div class="bottom">
   <?php 
-    if(isset($_POST['submit'])){echo $persons; }   
+   // if(isset($_POST['submit'])){echo $persons; }   
   ?>
 </div>
 </body>
