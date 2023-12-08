@@ -22,8 +22,6 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
 //echo '<pre>', var_dump( $thepage ), '</pre>';
 
 
-
-
 ?>
 <!doctype html>
 <html>
@@ -99,9 +97,8 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
                    ?>
                           <h2>La boucle while</h2>
                           <h3>Paragraphe HTML</h3>
-
                           <?php 
-                          $i = 0;                        
+                          $i = 0;                       
                           while($i < count($days)){?> 
                             <p class="calendrier">
                                  <a class="" href="index.php?day=<?php echo $days[$i];?>">                      
@@ -124,7 +121,25 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
 </body>
 
 </html>
+<!-- if we want to start while we have to get a  first variable  from array-->
+<!-- $i = $_GET("days") -->
+<?php 
+// 
+// $i = $_GET['day'];
+// if(isset(C)){
+//     echo $_GET['day'];
+// }
 
-
+/*while($x < 10) {
+    if ($x == 4) {
+        $x++;
+        continue;
+      }
+      echo "The number is: $x <br>";
+      $x++;
+    }
+    while($i == $_GET['day']) this can be run 
+    */
+?>
 
 
