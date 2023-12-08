@@ -15,16 +15,15 @@ $days = [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi
 // }
 
 // 2.option 
+
 $theday = ( isset( $_GET['day'] ) ) ? $_GET['day'] : 0;
 
 $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
-
-//$thepageFor = ( isset( $_GET['for'] ) ) ? $_GET['for'] : 'for';
-
-//$thepageWhile = ( isset( $_GET['while'] ) ) ? $_GET['while'] : 'while';
+//echo '<pre>', var_dump( $thepage ), '</pre>';
 
 
-// echo '<pre>', var_dump( $thepage ), '</pre>';
+
+
 ?>
 <!doctype html>
 <html>
@@ -42,15 +41,22 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
         <aside>
         <form method="get">
             <input type="text" placeholder="Recherche d'un jour" name="day" 
-            value="<?php echo $theday ; ?>">
-            <input type="hidden" name="page" value="for">                                      
+            value="<?php echo $theday ; ?>">                                    
             <input type="submit" name="OK" value="OK">
+        
+          <ul class="menu">
+            <li>
+                <input type="radio" id="foreach" name="page" value="foreach" >
+                <a  href="index.php">Foreach</a></li>
+            </li>
+            <li>
+                <input type="radio" id="for" name="page" value="for" >
+                <a  href="index.php">For</a></li>
+            <li>
+                <input type="radio" id="while" name="page" value="while" >
+                <a  href="index.php">While</a></li>
+          </ul> 
         </form>
-        <ul class="menu">
-            <li><a class="actif" href="index.php">Foreach</a></li>
-            <li><a class="" href="index.php">For</a></li>
-            <li><a class="" href="index.php">While</a></li>
-        </ul>
         </aside>
         <section>
            <?php 
@@ -72,7 +78,7 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
                          </table>
                    <?php
                    break;
-   
+
                    case 'for' :
                    ?>
                          <h2>La boucle for</h2>
@@ -94,16 +100,17 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
                           <h2>La boucle while</h2>
                           <h3>Paragraphe HTML</h3>
 
-                          <?php while($i < count($days)){?> 
+                          <?php 
+                          $i = 0;                        
+                          while($i < count($days)){?> 
                             <p class="calendrier">
                                  <a class="" href="index.php?day=<?php echo $days[$i];?>">                      
-                                     <?php  echo $days[$i]."<br>";
+                                     <?php  echo $days[$i] ."<br>";
                                              $i++;  
                                      ?> 
                                  </a>
                             </p>                                                      
-                          <?php  } ?>                                
-                           
+                          <?php  } ?>                                                          
                    <?php
                    break;
                }
@@ -117,9 +124,7 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
 </body>
 
 </html>
-                                <!-- <li>
-                                   <a class="" href="index.php">
-                                       Jour 
-                                   </a>
-                               </li> -->
-                               
+
+
+
+
