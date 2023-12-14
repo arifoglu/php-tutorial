@@ -1,18 +1,18 @@
-# This file is ready to start learning and practicing  phpMyAdmin and mysql .
+* This file is ready to start learning and practicing  phpMyAdmin and mysql .
 
 You can look at this video: https://youtu.be/lq19oMjPHG8?si=RB6FbmwY0R12Snzp 
 
-# 1.You just Run this code on terminal:
+* 1.You just Run this code on terminal:
                                      docker compose up -d
                                      
 Note:when we run this command << db_data >> file will be create on our local folder.
 
-# 2.You just use this credientials on phpmyadmin website:
+* 2.You just use this credientials on phpmyadmin website:
                                     : root
                                     : arifoglu
 
-# ----------------------------------------------------------------------------
-# database
+* -------------------------------------------------------------------------
+* database
   #database
   db:
     image: mysql:5.7
@@ -25,17 +25,17 @@ Note:when we run this command << db_data >> file will be create on our local fol
         MYSQL_PASSWORD: arifoglu 
 
 # Note:
-  # If we use these passwords like this:
+  * If we use these passwords like this:
                               MYSQL_ROOT_PASSWORD: arifoglu 
                               MYSQL_PASSWORD: arifoglu 
 
-  # we have to define them at phpmyadmin environment like this:
+  * we have to define them at phpmyadmin environment like this:
                             environment:
                                PMA_HOST: db 
                                MYSQL_ROOT_PASSWORD: arifoglu 
 
-# ---------------------------------------------------------------------------------
-# phpmyadmin
+* ------------------------------------------------------------------------------
+* phpmyadmin
 phpmyadmin:
     depends_on:
       - db
