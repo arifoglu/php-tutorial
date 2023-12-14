@@ -8,7 +8,7 @@ You can look at this video: https://youtu.be/lq19oMjPHG8?si=RB6FbmwY0R12Snzp
 
                                      docker compose up -d
                                      
-Note:when we run this command << db_data >> file will be create on our local folder.
+Note:when you run this command , << db_data >> file will be create on our local folder.
 
 2.You just use this credientials on phpmyadmin website:
 
@@ -17,20 +17,14 @@ Note:when we run this command << db_data >> file will be create on our local fol
 
  -------------------------------------------------------------------------
 
-* database
+* database part
 
       #database
-
       db:
-
         image: mysql:5.7
-
         volumes:
-
           - ./db_data:/var/lib/mysql
-
         restart: always
-        
         environment:
             MYSQL_ROOT_PASSWORD: arifoglu 
             MYSQL_DATABASE: db
@@ -49,7 +43,7 @@ Note:when we run this command << db_data >> file will be create on our local fol
                                MYSQL_ROOT_PASSWORD: arifoglu 
 
  ------------------------------------------------------------------------------
-* phpmyadmin
+* phpmyadmin part 
 
         phpmyadmin:
 
