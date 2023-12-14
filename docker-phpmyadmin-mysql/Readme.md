@@ -19,7 +19,6 @@ Note:when you run this command , << db_data >> file will be create on our local 
 
 * database part
 
-      #database
       db:
         image: mysql:5.7
         volumes:
@@ -30,13 +29,13 @@ Note:when you run this command , << db_data >> file will be create on our local 
             MYSQL_DATABASE: db
             MYSQL_PASSWORD: arifoglu 
 
-# Note:
-  * If we use these passwords like this:
+
+  * Note: If we use these passwords like this:
 
                               MYSQL_ROOT_PASSWORD: arifoglu 
                               MYSQL_PASSWORD: arifoglu 
 
-  * we have to define them at phpmyadmin environment like this:
+   we have to define them at phpmyadmin environment like this:
 
                             environment:
                                PMA_HOST: db 
@@ -46,17 +45,12 @@ Note:when you run this command , << db_data >> file will be create on our local 
 * phpmyadmin part 
 
         phpmyadmin:
-
             depends_on:
               - db
-
             image: phpmyadmin/phpmyadmin
-
             restart: always
-
             ports:           
               - "8080:80"
-
             environment:
               PMA_HOST: db 
               MYSQL_ROOT_PASSWORD: arifoglu 
