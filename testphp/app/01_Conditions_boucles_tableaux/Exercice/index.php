@@ -3,24 +3,10 @@ $days = [ 'Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi
 //echo '<pre>', var_dump( $days ), '</pre>';
 //echo '<pre>', var_dump( $days[ $theday ] ), '</pre>';
 
-///
-// 1.option
-// if(isset($_GET['day']))
-// {
-//     echo $_GET['day'];
-// }
-// else
-// {
-//     echo 0;
-// }
-
-// 2.option 
-
 $theday = ( isset( $_GET['day'] ) ) ? $_GET['day'] : 0;
 
 $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
 //echo '<pre>', var_dump( $thepage ), '</pre>';
-
 
 ?>
 <!doctype html>
@@ -104,9 +90,9 @@ $thepage = ( isset( $_GET['page'] ) ) ? $_GET['page'] : 'foreach';
                                                  {
                                                     echo  $days[$i] ."<br>";
                                                     break ;
-                                                 }                                                                        
+                                                 }             
                                                   $i++;                                     
-                                          ?>                                                                                          
+                                          ?>                                                        
                                <?php  } ?> 
                    <?php
                    break;

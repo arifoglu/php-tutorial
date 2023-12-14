@@ -28,6 +28,14 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         echo $name;
     }
 }
+
+// "2.option
+// if($_SERVER["REQUEST_METHOD"] == "POST"){
+//     $name = $_REQUEST['fname'];
+// 
+//     echo empty($name) ? 'name is empty' : $name ;
+// }
+
 ?>
 
 </body>
