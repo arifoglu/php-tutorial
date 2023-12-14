@@ -18,12 +18,19 @@ Note:when we run this command << db_data >> file will be create on our local fol
  -------------------------------------------------------------------------
 
 * database
+
       #database
+
       db:
+
         image: mysql:5.7
+
         volumes:
+
           - ./db_data:/var/lib/mysql
+
         restart: always
+        
         environment:
             MYSQL_ROOT_PASSWORD: arifoglu 
             MYSQL_DATABASE: db
@@ -43,17 +50,19 @@ Note:when we run this command << db_data >> file will be create on our local fol
 
  ------------------------------------------------------------------------------
 * phpmyadmin
+
         phpmyadmin:
 
             depends_on:
               - db
+
             image: phpmyadmin/phpmyadmin
 
             restart: always
 
-            ports:
+            ports:           
               - "8080:80"
-              
+
             environment:
               PMA_HOST: db 
               MYSQL_ROOT_PASSWORD: arifoglu 
