@@ -1,7 +1,11 @@
 1.Download Docker 
+
 2.Set up an account on Docker Hub
+
 3.Run Docker and Download image
+
 4.Start MySQL image
+
 5.Connect to database and run SQL
 
 Note:to install mysql on Docker
