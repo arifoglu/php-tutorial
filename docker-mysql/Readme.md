@@ -13,5 +13,6 @@ Note:To install mysql on Docker
 # We get this code from Docker Hub :
                     docker run --name some-mysql -e MYSQL_ROOT_PASSWORD=my-secret-pw -d mysql:tag
 
-# We will change some things (container name , password , mysql tag ...)                    
+# We will change some things 
+* (container name , password , mysql tag ...)                    
                     docker run --name arifoglu-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=arifoglu -d mysql:8.0
