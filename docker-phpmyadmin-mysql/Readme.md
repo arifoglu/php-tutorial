@@ -1,14 +1,14 @@
 * This file is ready to start learning and practicing  phpMyAdmin and mysql .
+-------------------------------------------------------------------------
 
 You can look at this video: https://youtu.be/lq19oMjPHG8?si=RB6FbmwY0R12Snzp 
 
--------------------------------------------------------------------------
 
 1.You just Run this code on terminal:
 
                                      docker compose up -d
                                      
-Note:when you run this command , << db_data >> file will be create on our local folder.
+Note: When you run this command , << db_data >> file will be create on our local folder.
 
 2.You just use this credientials on phpmyadmin website:
 

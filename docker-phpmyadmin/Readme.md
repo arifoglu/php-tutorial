@@ -1,4 +1,4 @@
-* Note: To install phpmyadmin/phpmyadmin on Docker
+* Note: To install phpmyadmin/phpmyadmin  on Docker
 
 * Note:<< phpMyAdmin >> has been accepted in to the official DockerHub repository .
 * Note:<< phpmyadmin/phpmyadmin >> is older repository .we can use this one.
