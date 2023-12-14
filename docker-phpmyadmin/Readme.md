@@ -3,7 +3,6 @@
 Note2:
 
 << phpMyAdmin >> has been accepted in to the official DockerHub repository .
-
 << phpmyadmin/phpmyadmin >> is older repository .we can use this one.
 ---------------------------------------------------------------------------------
 
