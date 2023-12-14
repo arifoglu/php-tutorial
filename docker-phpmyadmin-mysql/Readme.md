@@ -3,11 +3,13 @@
 You can look at this video: https://youtu.be/lq19oMjPHG8?si=RB6FbmwY0R12Snzp 
 
 * 1.You just Run this code on terminal:
+
                                      docker compose up -d
                                      
 Note:when we run this command << db_data >> file will be create on our local folder.
 
 * 2.You just use this credientials on phpmyadmin website:
+
                                     : root
                                     : arifoglu
 
