@@ -10,7 +10,7 @@
 
 5.Connect to database and run SQL
 
-
+You can look at this video: https://youtu.be/kphq2TsVRIs?si=ZlO-nhZ2_zO3bcaX
 
 # We get this code from Docker Hub :
 
