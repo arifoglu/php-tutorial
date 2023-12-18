@@ -19,3 +19,6 @@ You can look at this video: https://youtu.be/kphq2TsVRIs?si=ZlO-nhZ2_zO3bcaX
 * We will change some things (container name , password , mysql tag ...)   
 
                     docker run --name arifoglu-mysql -p 3306:3306 -e MYSQL_ROOT_PASSWORD=arifoglu -d mysql:8.0
+
+* We have to open MySQl workbench in our local machine.
+We'll be connect from localhost to mySql via MySQL workbench.                    
