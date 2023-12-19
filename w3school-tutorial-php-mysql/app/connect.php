@@ -21,7 +21,4 @@ echo "connected succesfully" ;
 // }
 // echo "connected succesfully";
 
-
-
-
 ?>
