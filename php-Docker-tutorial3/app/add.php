@@ -20,6 +20,18 @@
 // <script>window.location ="https://www.bbc.co.uk"</script> 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 
+
+// connect to database
+
+$conn = mysqli_connect('arifoglu_mysql' , 'root' , 'arifoglu' , 'pizzas') ;
+
+// check connection
+
+if(!$conn){
+    echo 'connection error :'. mysqli_connect_error();
+}
+
+
 $email = $title = $ingredients = "";
 
 $errors = array('email'=> '','title'=>'','ingredients'=>'');
@@ -83,8 +95,24 @@ $errors = array('email'=> '','title'=>'','ingredients'=>'');
    }
    else
    {
-    //echo "form is valid";
-    header('Location: index.php');
+      // escape sql chars
+      $email = mysqli_real_escape_string($conn, $_POST['email']);
+      $title = mysqli_real_escape_string($conn, $_POST['title']);
+      $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
+  
+      // create sql ant insert into
+      $sql = "INSERT INTO pizzatest(title,email,ingredients) VALUES('$title','$email','$ingredients')";
+  
+      // save to database
+      if(mysqli_query($conn, $sql))
+      {
+          header('Location: index.php');
+      } 
+      else 
+      {
+          echo 'query error: '. mysqli_error($conn);
+      }
+
    }
 
 };

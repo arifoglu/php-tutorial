@@ -5,7 +5,7 @@ services:
   php:
     build: .
     volumes: 
-      - ./app:/var/www/html
+      - ./app:/var/www/html 
     ports :
       - 8000:80   
 #database
@@ -20,7 +20,6 @@ services:
           MYSQL_ROOT_PASSWORD: arifoglu 
           MYSQL_DATABASE: db
           MYSQL_PASSWORD: arifoglu 
-
 #phpmyadmin
   phpmyadmin:
     depends_on:

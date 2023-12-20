@@ -26,7 +26,6 @@ mysqli_free_result($result);
 // close connection 
 mysqli_close($conn);
 
-// explode("," , $pizzas[0]['ingredients']);
 
 
 ?>
