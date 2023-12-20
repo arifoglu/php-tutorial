@@ -34,7 +34,6 @@ mysqli_close($conn);
 <!DOCTYPE html>
 <html lang="en">
 
-
  <?php include('./header.php'); ?>
 
  <h4 class="center grey-text">Pizzas!</h4>
@@ -42,7 +41,7 @@ mysqli_close($conn);
  <div class="container">
     <div class="row">
 
-        <?php foreach($pizzas as $pizza) : ?>
+        <?php foreach($pizzas as $pizza): ?>
             
             <div class="col s6 m3">
                 <div class="card z-depth-0">
@@ -50,7 +49,7 @@ mysqli_close($conn);
                         <h6><?php echo htmlspecialchars($pizza["title"]);?></h6>
                         <div><?php echo htmlspecialchars($pizza["ingredients"]);?></div>
                         <ul>
-                          <?php foreach(explode("," , $pizza["ingredients"]) as $ing ) :?>   
+                          <?php foreach(explode("," , $pizza["ingredients"]) as $ing ): ?>   
                             <ul>
                                 <li><?php echo htmlspecialchars ($ing) ?></li>          
                             </ul>
@@ -63,6 +62,7 @@ mysqli_close($conn);
                 </div>
             </div>
         <?php endforeach; ?> 
+
         <?php if(count($pizzas) >= 2): ?>
             <p>there are more than 2 pizzas</p>
             <?php else : ?>

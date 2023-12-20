@@ -9,6 +9,6 @@
                     docker pull phpmyadmin/phpmyadmin:latest
 
 
-* this container is not enought yet.
+* this container is not enough yet.
 * we have to add mysql database for accesing to phpMyadmin tool.
 
