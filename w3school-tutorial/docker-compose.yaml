@@ -11,6 +11,3 @@ services:
             dockerfile: ./php/Dockerfile
         volumes:
             - ./app:/app
-    # php
-    # mysql
-    # redis
