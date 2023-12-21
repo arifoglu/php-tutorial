@@ -22,11 +22,9 @@
 
 
 // connect to database
-
 $conn = mysqli_connect('arifoglu_mysql' , 'root' , 'arifoglu' , 'pizzas') ;
 
 // check connection
-
 if(!$conn){
     echo 'connection error :'. mysqli_connect_error();
 }
@@ -89,13 +87,15 @@ $errors = array('email'=> '','title'=>'','ingredients'=>'');
     } 
    }
 
+   //  send to database our product list 
+
    if(array_filter($errors))
    {
     // echo "error in the form";
    }
    else
    {
-      // escape sql chars
+      // escape sql chars =>avoid SQL injection 
       $email = mysqli_real_escape_string($conn, $_POST['email']);
       $title = mysqli_real_escape_string($conn, $_POST['title']);
       $ingredients = mysqli_real_escape_string($conn, $_POST['ingredients']);
@@ -149,6 +149,5 @@ $errors = array('email'=> '','title'=>'','ingredients'=>'');
 </section>
 
  <?php include('./footer.php'); ?>
-    
 
 </html>
