@@ -1,3 +1,40 @@
+<?php
+
+$nom = $email = $message = "" ;
+$errors = array('email'=> '','nom'=>'','message'=>'');
+
+if(isset($_POST["submit"])){
+
+    // echo $_POST["nom"];
+    // echo $_POST["email"];
+    // echo $_POST["message"];
+
+    // check nom
+    if(empty($_POST["nom"]))
+    {
+        $errors ["nom"] = "nom est necessaire";
+    }
+    else
+    {
+        $nom = $_POST["nom"] ;
+    }
+
+    // check email
+    if(empty($_POST["email"]))
+    {
+        $errors["email"] = "email est necessaire";
+    }
+    else
+    {
+        $email = $_POST["email"];
+    }
+
+
+}
+
+?>
+
+
 <!doctype html>
 <html>
 <head>
@@ -14,23 +51,27 @@
 
     <main>
         <section>
-            <form action="index.php" method="post">
+            <form action="index.php" method="POST">
                 <div>
                     <input type="radio" name="genre" value="Mr." id="mr"> <label for="mr">Monsieur</label>
                     <input type="radio" name="genre" value="Mme" id="mme"> <label for="mme">Madame</label>
                 </div>
                 <div>
                     <label for="nom">Nom*</label>
-                    <span class="error" title="Vous pouvez indiquer votre prénom et nom dans le même champ.">Veuillez indiquer votre nom</span>
+                    <span class="error"><?php echo $errors['nom'];?></span>
+
                     <br>
                     <input type="text" name="nom" id="nom">
+                    
+                    
                 </div>
                 <div>
                     <label for="email">E-mail*</label>
-                    <span class="error" title="Le message vous sera également transmis">Veuillez indiquer votre adresse e-mail</span>
+                    <span class="error"><?php echo $errors['email'] ;?></span>
                     <span class="error" title="Au format [nom@nomdedomaine.ext]">Veuillez indiquer une adresse valide</span>
                     <br>
                     <input type="text" name="email" id="email">
+                    <span class="error"> </span>
                 </div>
                 <div>
                     <label for="sujet">Sujet*</label>
@@ -53,7 +94,7 @@
                     <label for="newsletter">Je souhaite recevoir la newsletter</label>
                 </div>
                 <div>
-                    <input type="submit" value="Envoyer le message">
+                    <input type="submit" name="submit" value="Envoyer le message">
                 </div>
 
             </form>			
