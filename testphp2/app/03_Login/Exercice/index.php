@@ -1,3 +1,59 @@
+<?php
+
+// connect to database 
+$conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
+
+if(!$conn){
+    echo "connection errror : " .mysqli_connect_error() ; 
+}
+
+
+// $email = $password = "" ;
+// $errors = array('email'=> '','password'=>'');
+
+if(isset($_POST["submit"])){
+
+   // echo $_POST["email"];
+   // echo $_POST["password"];
+    
+    //check email
+//    if(empty($_POST["email"]))
+//    {
+//        $errors["email"] = "email est necessaire";
+//     }
+//     else
+//     {
+//         $email = $_POST["email"];
+//         if(!filter_var($email,FILTER_VALIDATE_EMAIL))
+//         {
+//             $errors["email"] = "email doit être valid";
+//         }
+//     }
+// 
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+$query = "SELECT *FROM loginlist WHERE email='$email' , pass='$password' " ;
+
+$result = $conn->query($query);
+if($result->num_rows == 1){
+    //login succes
+
+    exit();
+}
+else
+{
+    //login failed
+    exit();
+}
+$conn->close();
+
+}
+
+?>
+
+
+
 <!doctype html>
 <html>
 <head>
@@ -44,8 +100,7 @@
 
                 <p>
                 <label for="email">E-mail</label>
-                <span class="error" title="Sans doute un oubli">Veuillez indiquer votre adresse e-mail</span>
-                <span class="error" title="Au format [nom@nomdedomaine.ext]">Veuillez indiquer une adresse e-mail valide</span>
+                <span class="error" ><?php // echo $errors["email"] ?></span>
                 <br>
                 <input class="" type="text" name="email" id="email" value="">
                 </p>
@@ -58,7 +113,7 @@
                 </p>
 
                 <p>
-                <input type="submit" value="OK">
+                <input type="submit" value="OK" name="submit">
                 </p>
 
             </form>	

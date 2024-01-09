@@ -19,6 +19,12 @@ if(isset($_POST["submit"])){
     // echo $_POST["email"];
     // echo $_POST["mymessage"];
 
+        // chekbox genre
+        if(!empty($_POST["genre"]))
+        {
+            $genre = $_POST["genre"] ;
+        }
+
         // check nom
         if(empty($_POST["nom"]))
         {
@@ -74,8 +80,11 @@ if(isset($_POST["submit"])){
         {
             $newsletter = $_POST["newsletter"] ;
         }
+        else
+        {
+            $newsletter = $_POST["newsletter"] = " " ;
+        }
 
-    
 
         if(array_filter($errors))
         {
@@ -83,14 +92,13 @@ if(isset($_POST["submit"])){
         }
         else
         {
-            $errors ["validation"] = "form est valid";
-
             $genre = mysqli_real_escape_string($conn ,$_POST["genre"]);
             $nom = mysqli_real_escape_string($conn ,$_POST["nom"]);
             $email = mysqli_real_escape_string($conn ,$_POST["email"]);
             $sujet = mysqli_real_escape_string($conn ,$_POST["sujet"]);
             $mymessage = mysqli_real_escape_string($conn ,$_POST["mymessage"]);
             $newsletter = mysqli_real_escape_string($conn ,$_POST["newsletter"]);
+        
             
             // create sql 
             $sql = "INSERT INTO contactlist(genre,nom,email,sujet,mymessage,newsletter) VALUES ('$genre','$nom','$email','$sujet','$mymessage','$newsletter')";
@@ -107,6 +115,7 @@ if(isset($_POST["submit"])){
         } 
 
 }
+
 
 ?>
 
@@ -161,7 +170,7 @@ if(isset($_POST["submit"])){
                     <textarea name="mymessage" id="mymessage" value="<?php echo htmlspecialchars($mymessage); ?>"></textarea>
                 </div>
                 <div>
-                    <input type="checkbox" name="newsletter" id="newsletter">
+                    <input type="checkbox" name="newsletter" id="newsletter" >
                     <label for="newsletter">Je souhaite recevoir la newsletter</label>
                 </div>
                 <div>
