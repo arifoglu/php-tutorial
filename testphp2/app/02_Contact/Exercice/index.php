@@ -105,20 +105,16 @@ if(isset($_POST["submit"])){
 
             if(mysqli_query($conn, $sql))
             {
-                header('Location: index.php');
+                header('Location: succes.php');  
             }
             else
             {
                 echo "query error " . mysqli_error($conn);
-            }
-
+            }           
         } 
-
 }
 
-
 ?>
-
 
 <!doctype html>
 <html>
@@ -128,7 +124,7 @@ if(isset($_POST["submit"])){
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+
 <div class="container">
     <header>
         <h1>Formulaure de contact</h1>
@@ -160,7 +156,7 @@ if(isset($_POST["submit"])){
                     <select name="sujet" id="sujet">
                             <option value=""></option>
                             <option value="renseignements" <?php echo ( $sujet === 'renseignements' ) ? 'selected' : ''; ?>>Demande de renseignements</option>
-                            <option value="autre"<?php echo ( $sujet === 'autre' ) ? ' selected' : ''; ?>>Autre</option>
+                            <option value="autre" <?php echo ( $sujet === 'autre' ) ? ' selected' : ''; ?>>Autre</option>
                     </select>
                 </div>
                 <div>
@@ -185,7 +181,7 @@ if(isset($_POST["submit"])){
 </div>
     
 <footer>
-	PHP : Le formulaire de contact
+	PHP : Le formulaire de contact 
 </footer>
     
 </body>

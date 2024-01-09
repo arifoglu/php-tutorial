@@ -1,54 +1,39 @@
 <?php
 
 // connect to database 
-$conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
+if($_SERVER["REQUEST_METHOD"] === "POST"){
 
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
+
+// connection database
+$conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
 if(!$conn){
     echo "connection errror : " .mysqli_connect_error() ; 
 }
 
-
-// $email = $password = "" ;
-// $errors = array('email'=> '','password'=>'');
-
-if(isset($_POST["submit"])){
-
-   // echo $_POST["email"];
-   // echo $_POST["password"];
-    
-    //check email
-//    if(empty($_POST["email"]))
-//    {
-//        $errors["email"] = "email est necessaire";
-//     }
-//     else
-//     {
-//         $email = $_POST["email"];
-//         if(!filter_var($email,FILTER_VALIDATE_EMAIL))
-//         {
-//             $errors["email"] = "email doit être valid";
-//         }
-//     }
-// 
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-
-$query = "SELECT *FROM loginlist WHERE email='$email' , pass='$password' " ;
+//validate login
+$query = "SELECT *FROM loginlist WHERE email='$email' AND paso='$password' ";
 
 $result = $conn->query($query);
-if($result->num_rows == 1){
-    //login succes
 
+if($result->num_rows == 1)
+{
+    header("Location: succes.php") ;
     exit();
 }
 else
 {
-    //login failed
+    header("Location: failed.php") ;
     exit();
 }
+
 $conn->close();
 
 }
+
+
 
 ?>
 
