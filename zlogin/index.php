@@ -6,9 +6,8 @@ if(!$conn){
     echo "connection errror : " .mysqli_connect_error() ; 
 }
 
-
-$email = $password = $answer = "" ;
-$errors = array('email'=>'' ,'password'=> '','answer'=> '');
+$email = $password = "" ;
+$errors = array('email'=>'' ,'password'=> '');
 
 if(isset($_POST["submit"])){
      //echo $_POST["email"];
@@ -37,30 +36,11 @@ if(isset($_POST["submit"])){
         $password = $_POST["password"];
     }
 
-    // verify user connection with database system 
-    if(!empty($_POST["submit"]))
-    {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $query = "SELECT *FROM loginlist WHERE email='$email' AND password='$password'";
-        $result = mysqli_query($conn,$query);
-        $count = mysqli_num_rows($result);
-        if($count > 0)
-        {
-            $answer = "login succesful $email";
-
-        }
-        else
-        {
-            $answer = "login failed";
-        }
-    }
-}
-if(isset($_POST["btn_logout"])){
-    $answer = "logout succesful" ;
 }
 
 ?>
+
+
 
 <!doctype html>
 <html>
@@ -86,7 +66,7 @@ if(isset($_POST["btn_logout"])){
 
         <section>
            <h2>Enregistrez-vous</h2>
-               <?php if(isset($_POST["submit"]) && $count > 0 ) : ?>
+               <?php if(isset($_POST["submit"])): ?>
                    <p>
                        Bienvenue ! 
                    </p>
@@ -95,16 +75,17 @@ if(isset($_POST["btn_logout"])){
                    </p>
                    <form action="index.php?unlog" method="post">
                        <p>
-                       <input type="submit" name="btn_logout" value="Déconnexion">
+                       <input type="submit" value="Déconnexion">
                        </p>
                    </form>	
                    <?php else :?>
+                    
                <?php endif; ?>
 
             <form action="index.php?login" method="post">
 
                 <p>
-                <span class="error" ><?php echo $answer ; ?></span>
+                <span class="error" title="Vous pouvez également contacter l'administrateur en cas d'oubli">Le système n'a pas réussi à vous authetifier. Veuillez essayer à nouveau.</span>
                 </p>
 
                 <p>
@@ -116,7 +97,7 @@ if(isset($_POST["btn_logout"])){
 
                 <p>
                   <label for="password">Mot de passe</label>
-                <span class="error"><?php  echo $errors["password"] ?></span>
+                <span class="error"><?php echo $errors["password"] ?></span>
                 <br>
                 <input class="" type="password" name="password" id="password" value="">
                 </p>
