@@ -60,6 +60,7 @@ if(isset($_POST["btn_logout"])){
     $answer = "logout succesful" ;
 }
 
+
 ?>
 
 <!doctype html>
