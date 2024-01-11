@@ -1,42 +1,38 @@
 <?php
 
+// connect to database 
+if($_SERVER["REQUEST_METHOD"] === "POST"){
+
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+
 // connection database
 $conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
 if(!$conn){
     echo "connection errror : " .mysqli_connect_error() ; 
 }
 
-$email = $password = "" ;
-$errors = array('email'=>'' ,'password'=> '');
+//validate login
+$query = "SELECT *FROM loginlist WHERE email='$email' AND paso='$password' ";
 
-if(isset($_POST["submit"])){
-     //echo $_POST["email"];
-     //echo $_POST["password"];
+$result = $conn->query($query);
 
-    // validation email
-    if(empty($_POST["email"]))
-    {
-        $errors["email"] = "est obligatoire";
-    }
-    else
-    {
-        $email = $_POST["email"];
-        if(!filter_var($email,FILTER_VALIDATE_EMAIL))
-        {
-            $errors["email"] = "doit être valid";
-        }
-    }
-    // validation password
-    if(empty($_POST["password"]))
-    {
-        $errors["password"] = "est obligatoire";
-    }
-    else
-    {
-        $password = $_POST["password"];
-    }
+if($result->num_rows == 1)
+{
+    header("Location: index.php") ;
+    exit();
+}
+else
+{
+    header("Location: index.php") ;
+    exit();
+}
+
+$conn->close();
 
 }
+
+
 
 ?>
 
@@ -65,22 +61,20 @@ if(isset($_POST["submit"])){
         </aside>
 
         <section>
-           <h2>Enregistrez-vous</h2>
-               <?php if(isset($_POST["submit"])): ?>
-                   <p>
-                       Bienvenue ! 
-                   </p>
-                   <p>
-                       Vos accès ont été validés.
-                   </p>
-                   <form action="index.php?unlog" method="post">
-                       <p>
-                       <input type="submit" value="Déconnexion">
-                       </p>
-                   </form>	
-                   <?php else :?>
-                    
-               <?php endif; ?>
+
+            <h2>Enregistrez-vous</h2>
+            <p>
+                Bienvenue ! 
+            </p>
+            <p>
+                Vos accès ont été validés.
+            </p>
+
+            <form action="index.php?unlog" method="post">
+                <p>
+                <input type="submit" value="Déconnexion">
+                </p>
+            </form>	
 
             <form action="index.php?login" method="post">
 
@@ -90,14 +84,14 @@ if(isset($_POST["submit"])){
 
                 <p>
                 <label for="email">E-mail</label>
-                <span class="error" ><?php echo $errors["email"] ?></span>
+                <span class="error" ><?php // echo $errors["email"] ?></span>
                 <br>
                 <input class="" type="text" name="email" id="email" value="">
                 </p>
 
                 <p>
                   <label for="password">Mot de passe</label>
-                <span class="error"><?php echo $errors["password"] ?></span>
+                <span class="error" title="Sans doute un oubli.">Veuillez indiquer votre mot de passe</span>
                 <br>
                 <input class="" type="password" name="password" id="password" value="">
                 </p>

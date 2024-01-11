@@ -14,30 +14,6 @@ if(isset($_POST["submit"])){
      //echo $_POST["email"];
      //echo $_POST["password"];
 
-
-    // validation email
-    if(empty($_POST["email"]))
-    {
-        $errors["email"] = "est obligatoire";
-    }
-    else
-    {
-        $email = $_POST["email"];
-        if(!filter_var($email,FILTER_VALIDATE_EMAIL))
-        {
-            $errors["email"] = "doit être valid";
-        }
-    }
-    // validation password
-    if(empty($_POST["password"]))
-    {
-        $errors["password"] = "est obligatoire";
-    }
-    else
-    {
-        $password = $_POST["password"];
-    }
-
     // verify user connection with database system 
     if(!empty($_POST["submit"]))
     {
@@ -49,7 +25,6 @@ if(isset($_POST["submit"])){
         if($count > 0)
         {
             $answer = "login succesful $email";
-            header("Location: admin.php");
 
         }
         else
@@ -88,8 +63,6 @@ if(isset($_POST["btn_logout"])){
         </aside>
 
         <section>
-           <h2>Enregistrez-vous</h2>
-               <?php if(isset($_POST["submit"]) && $count > 0 ) : ?>
                    <p>
                        Bienvenue ! 
                    </p>
@@ -101,41 +74,13 @@ if(isset($_POST["btn_logout"])){
                        <input type="submit" name="btn_logout" value="Déconnexion">
                        </p>
                    </form>	
-                   <?php else :?>
-               <?php endif; ?>
-
-            <form action="index.php?login=<?php echo "OK" ; ?>" method="post">
-
-                <p>
-                <span class="error" ><?php echo $answer ; ?></span>
-                </p>
-
-                <p>
-                <label for="email">E-mail</label>
-                <span class="error" ><?php echo $errors["email"] ?></span>
-                <br>
-                <input class="" type="text" name="email" id="email" value="">
-                </p>
-
-                <p>
-                  <label for="password">Mot de passe</label>
-                <span class="error"><?php  echo $errors["password"] ?></span>
-                <br>
-                <input class="" type="password" name="password" id="password" value="">
-                </p>
-
-                <p>
-                <input type="submit" value="OK" name="submit">
-                </p>
-
-            </form>	
         </section>
     </main>
 
 </div>
     
 <footer>
-	L'authetification d'accès
+	L'authetification d'accès !!! 
 </footer>
 </body>
 </html>
