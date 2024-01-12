@@ -1,40 +1,11 @@
-<?php
+<?php 
 
-// connection database
-$conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
-if(!$conn){
-    echo "connection errror : " .mysqli_connect_error() ; 
-}
-
-
-$email = $password = $answer = "" ;
-$errors = array('email'=>'' ,'password'=> '','answer'=> '');
-
-if(isset($_POST["submit"])){
-     //echo $_POST["email"];
-     //echo $_POST["password"];
-
-    // verify user connection with database system 
-    if(!empty($_POST["submit"]))
-    {
-        $email = $_POST["email"];
-        $password = $_POST["password"];
-        $query = "SELECT *FROM loginlist WHERE email='$email' AND password='$password'";
-        $result = mysqli_query($conn,$query);
-        $count = mysqli_num_rows($result);
-        if($count > 0)
-        {
-            $answer = "login succesful $email";
-
-        }
-        else
-        {
-            $answer = "login failed";
-        }
-    }
-}
 if(isset($_POST["btn_logout"])){
     $answer = "logout succesful" ;
+    session_unset();
+    session_destroy();
+
+
 }
 
 

@@ -1,11 +1,10 @@
-<?php
+<?php session_start();
 
 // connection database
 $conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
 if(!$conn){
     echo "connection errror : " .mysqli_connect_error() ; 
 }
-
 
 $email = $password = $answer = "" ;
 $errors = array('email'=>'' ,'password'=> '','answer'=> '');
@@ -28,6 +27,7 @@ if(isset($_POST["submit"])){
             $errors["email"] = "doit être valid";
         }
     }
+
     // validation password
     if(empty($_POST["password"]))
     {
@@ -43,11 +43,21 @@ if(isset($_POST["submit"])){
     {
         $email = $_POST["email"];
         $password = $_POST["password"];
+        
         $query = "SELECT *FROM loginlist WHERE email='$email' AND password='$password'";
         $result = mysqli_query($conn,$query);
+    
         $count = mysqli_num_rows($result);
+
+        $row=mysqli_fetch_array($result);
+        
+
         if($count > 0)
         {
+            $id=$row["id"];
+            $_SESSION["id"] =$id;
+            $_SESSION["email"] =$email;
+
             $answer = "login succesful $email";
             header("Location: admin.php");
 
@@ -58,9 +68,7 @@ if(isset($_POST["submit"])){
         }
     }
 }
-if(isset($_POST["btn_logout"])){
-    $answer = "logout succesful" ;
-}
+
 
 
 ?>
@@ -89,23 +97,8 @@ if(isset($_POST["btn_logout"])){
 
         <section>
            <h2>Enregistrez-vous</h2>
-               <?php if(isset($_POST["submit"]) && $count > 0 ) : ?>
-                   <p>
-                       Bienvenue ! 
-                   </p>
-                   <p>
-                       Vos accès ont été validés.
-                   </p>
-                   <form action="index.php?unlog" method="post">
-                       <p>
-                       <input type="submit" name="btn_logout" value="Déconnexion">
-                       </p>
-                   </form>	
-                   <?php else :?>
-               <?php endif; ?>
 
-            <form action="index.php?login=<?php echo "OK" ; ?>" method="post">
-
+            <form action="index.php?login" method="post">
                 <p>
                 <span class="error" ><?php echo $answer ; ?></span>
                 </p>

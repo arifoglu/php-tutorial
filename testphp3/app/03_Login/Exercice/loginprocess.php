@@ -12,6 +12,7 @@ if(!$conn){
 
  if(isset($_POST['submit'])){
 
+  // verify user credentials with database
      $email_unsafe = $_POST["email"];
      $pass_unsafe = $_POST["password"];
  
@@ -28,15 +29,14 @@ if(!$conn){
  
        if($counter == 0)
        {
-         echo "<script type='text/javascript'>alert('Invalid Usrename or Password!');
-         document.location='index.php'</script>";
+         header("Location: index.php");
        }
        else
        {
          $_SESSION["id"] =$id;
          $_SESSION["email"] =$name;
-         
-         echo "<script type='text/javascript'>document.location='administration.php'</script>";
+
+         header("Location: administration.php");
      }
  
  }
