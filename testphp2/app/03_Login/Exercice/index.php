@@ -1,15 +1,14 @@
 <?php session_start();
 
-// connection database
-$conn = mysqli_connect('arifoglu_mysql', 'root' ,'arifoglu',"login-page");
-if(!$conn){
-    echo "connection errror : " .mysqli_connect_error() ; 
-}
+include("connection.php");
+
 
 $email = $password = $answer = "" ;
 $errors = array('email'=>'' ,'password'=> '','answer'=> '');
 
 if(isset($_POST["submit"])){
+    
+
      //echo $_POST["email"];
      //echo $_POST["password"];
 
@@ -21,7 +20,7 @@ if(isset($_POST["submit"])){
     }
     else
     {
-        $email = $_POST["email"];
+        $email = $_POST["email"] ;
         if(!filter_var($email,FILTER_VALIDATE_EMAIL))
         {
             $errors["email"] = "doit être valid";

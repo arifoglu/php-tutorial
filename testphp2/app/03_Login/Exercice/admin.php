@@ -1,15 +1,13 @@
-<?php 
+<?php session_start();
 
 if(isset($_POST["btn_logout"])){
     $answer = "logout succesful" ;
     session_unset();
     session_destroy();
-
-
 }
 
-
 ?>
+
 
 <!doctype html>
 <html>
@@ -27,15 +25,25 @@ if(isset($_POST["btn_logout"])){
     <main>
         <aside>
             <ul class="menu">
-                <li><a href="admin.php">Administration</a></li>
+                <li><a href="admin.php" style="color:red">Administration</a></li>
                 <li><a href="index.php">Gestion du site</a></li>
                 <li><a href="index.php">Configuration</a></li>
             </ul>
         </aside>
 
         <section>
-                   <p>
-                       Bienvenue ! 
+            <?php if( isset( $_SESSION["email"] ) ){ ?>
+   
+                   <form action="index.php?unlog" method="post">
+                       <p>
+                       <input type="submit" name="btn_logout" value="Déconnexion">
+                       </p>
+                   </form>
+
+            <?php }else{ ?>
+
+                <p>
+                       Bienvenue ! La page d'admin.
                    </p>
                    <p>
                        Vos accès ont été validés.
@@ -44,7 +52,9 @@ if(isset($_POST["btn_logout"])){
                        <p>
                        <input type="submit" name="btn_logout" value="Déconnexion">
                        </p>
-                   </form>	
+                   </form>
+
+            <?php } ?>
         </section>
     </main>
 
