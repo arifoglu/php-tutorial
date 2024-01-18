@@ -17,7 +17,6 @@ require_once("config.php");
         <div class="row">
 				<div class="col-sm-3">
 					<h1>Registration</h1>
-					<p>Fill up the form with correct values.</p>
 					<hr class="mb-3">
 					<label for="firstname"><b>First Name</b></label>
 					<input class="form-control" id="firstname" type="text" name="firstname" required>
