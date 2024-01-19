@@ -13,7 +13,7 @@ services:
     image: mysql:latest
     container_name: arifoglu_mysql
     volumes:
-      - ./w3school-database:/var/lib/mysql
+      - ./db_data:/var/lib/mysql
     command: --default-authentication-plugin=mysql_native_password  
     restart: always
     environment:
