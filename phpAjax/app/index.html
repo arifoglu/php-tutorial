@@ -1,0 +1,38 @@
+<!-- basic ajax logic -->
+<!-- first : file is loaading -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        // 1. file is ready
+        // 2. button is clicking
+        // 3. #test div is loading 
+        // 4. while loading this file ,alert function is running
+        // 5. when alert function is OK ,data.txt file is loading
+        $(document).ready(function(){
+            $("#btn").click(function(){
+               $("#test").load("data.txt",function () {
+                    alert("hi there");
+                });
+            });
+        });
+    </script>
+
+</head>
+<body>
+    <div id="test">
+        <p>This is the first content</p>
+    </div>
+    <button id="btn">click to change</button>
+
+
+</body>
+</html>
