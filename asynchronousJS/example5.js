@@ -1,9 +1,9 @@
-const getTodos = (resource,callback) => {
+const getTodos = (callback) => {
 
     const request = new XMLHttpRequest();
+    
     request.addEventListener('readystatechange',()=>{
 
-    
          if(request.readyState === 4 && request.status === 200)
          {
             const data = JSON.parse(request.responseText);
@@ -15,20 +15,16 @@ const getTodos = (resource,callback) => {
             callback("could not fetch data",undefined);
          };
     });
-    request.open('GET',resource);
+    request.open('GET','todos.json'); // different files that we get 
     request.send();
 
 };
 
-getTodos("todos/aa.json", (err, data)=>{
-   console.log(data);
-
-   getTodos("todos/bb.json",(err,data)=>{
+getTodos((err, data)=>{
+   console.log("callback worked");
+   if(err){
+      console.log(err);
+   }else{
       console.log(data);
-      
-      getTodos("todos/cc.json",(err,data)=>{
-         console.log(data);
-      });
-   });
-
+   }
 });
