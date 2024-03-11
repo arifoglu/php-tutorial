@@ -1,30 +1,14 @@
-const getTodos = (resource) => {
+// async & await
 
-   return new Promise((resolve,reject)=>{
-
-      const request = new XMLHttpRequest();
-      request.addEventListener('readystatechange',()=>{
-      
-           if(request.readyState === 4 && request.status === 200)
-           {
-              const data = JSON.parse(request.responseText);
-              resolve(data);
-           }
-           else if(request.readyState === 4)
-           {
-              reject("cerror getting resource");
-           };
-      });
-      request.open('GET',resource);
-      request.send();
-   })
-
+const getTodos = async () => {
+   const response = await fetch("todos/aa.json");
+   if(response.status !== 200){
+      throw new Error("cannot fetch the data");
+   }
+   const data = await response.json();
+   return data;
 };
 
-
-getTodos("todos/aa.json").then(data =>{
-   console.log("promise resolved : ",data);
-}).catch((err)=>{
-   console.log("promise rejected :",err);
-});
-
+getTodos()
+   .then(data => console.log("resolved : ",data))
+   .catch(err => console.log("rejected : ",err.message));
