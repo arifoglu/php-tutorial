@@ -89,7 +89,7 @@ if(isset($_POST["submit"])){
 	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    
+
 <div class="container">
     <header>
         <h1>Formulaure de contact</h1>
