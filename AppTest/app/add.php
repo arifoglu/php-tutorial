@@ -130,7 +130,7 @@ $errors = array('email'=> '','title'=>'','ingredients'=>'');
 
     <form class="white" action="add.php" method="POST">
 
-        <label>Your Email:</label>
+        <label>Your Email :</label>
         <input type="text" name="email" value="<?php echo htmlspecialchars($email) ?>">
         <div class="red-text"><?php echo $errors['email'] ; ?></div>
 
